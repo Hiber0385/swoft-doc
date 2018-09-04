@@ -30,6 +30,38 @@ $result = Query::table(User::class)->where('id', 1)->update(['name' => 'name666'
 $result = Query::table(User::class)->where('id', 1)->limit(1)->get()->getResult();
 ```
 
+## 联表查询
+
+- Inner Join 语法
+
+```php
+$result = Query::table(User::class)
+        ->innerJoin('user_profiles','users.id = user_profiles.user_id')
+        ->limit(1)
+        ->get()
+        ->getResult();
+```
+
+- Left Join 语法
+
+```php
+$result = Query::table(User::class)
+        ->leftJoin('user_profiles','users.id = user_profiles.user_id')
+        ->limit(1)
+        ->get()
+        ->getResult();
+```
+
+- Right Join 语法
+
+```php
+$result = Query::table(User::class)
+        ->rightJoin('user_profiles','users.id = user_profiles.user_id')
+        ->limit(1)
+        ->get()
+        ->getResult();
+```
+
 ## 聚合操作
 
 ```php
